@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+{% load bootstrap5 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}Etape de production{% endblock %}
+
+{% block content %}
+    
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Ajouter un produit</a>
+        </li>
+    </ul>
+    <table class=" table">
+        <thead class="table-dark">
+            <tr>
+                <th>N°</th>
+                <th>libelle</th>
+                <th>Qte produite</th>               
+                <th>Code production</th>             
+                <th>Detail</th>
+                <th>Modification</th>
+                <th>Suppression</th>
+                </tr>
+        </thead>
+
+        <tbody>
+            {% for elt in object_list %}
+                <tr class=" table-hover">
+                    <td>{{ forloop.counter}}</td>
+                    <td>{{ elt.libelle }}</td>
+                    <td>{{ elt.qteproduite}}</td>
+                    <td>{{ elt.prod.codeprod}}</td>
+                    <td>
+                        <span class="action_btn">
+                            <a href="#" class="btn btn-default">Detail</a>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="action_btn">
+                            <a href="#" class="btn btn-default">Modifier</a>
+                        </span>
+                    </td>
+                        <td>
+                            <span class="action_btn">
+                                <a href="#" class="btn btn-danger">Supprimer</a>
+                            </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    
+
+{% endblock %}

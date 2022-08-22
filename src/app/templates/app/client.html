@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{% block title %} Liste des clients {% endblock %}
+
+{% block content %}
+
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Ajouter un client</a>
+        </li>
+    </ul>   
+    <div class="table-responsive-sm">
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Adresse</th>               
+                    <th>Telephone</th>             
+                    <th>Details</th>
+                    <th>Modification</th>
+                    <th>Suppression</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elt in object_list %}
+                    <tr>
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{ elt.nom }}</td>
+                        <td>{{ elt.adress}}</td>
+                        <td>{{ elt.tel}}</td>
+                        <td>
+                            <span class="action_btn">
+                                <a href="#" class="btn btn-default">Detail</a>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="action_btn">
+                                <a href="#" class="btn btn-default">Modifier</a>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="action_btn">
+                                <a href="#" class="btn btn-danger">Supprimer</a>
+                            </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+{% endblock %}
